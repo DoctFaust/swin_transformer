@@ -43,11 +43,11 @@ def split_dataset(input_folder, train_txt, val_txt, test_txt, train_ratio=0.8, v
 
 
 # 输入文件夹路径和输出txt文件路径
-input_folder = "D:\\RhodesIsland\\__ProgrammingWorks__\\Py\\model\\swin_transformer\\data\\my_test_data\\annotations\\labels" # 这里替换为你的输入文件夹路径
+input_folder = "./data/my_test_data/annotations/labels" # 这里替换为你的输入文件夹路径
 # input_folder = "F:\\segment\\Efficient-Transformer-main\\data\\my_test_data\\annotations\\labels" 
-train_txt = 'data\\my_test_data\\annotations\\train.txt'  # 训练集文件
-val_txt = 'data\\my_test_data\\annotations\\val.txt'  # 验证集文件
-test_txt = 'data\\my_test_data\\annotations\\test.txt'  # 测试集文件
+train_txt = './data/my_test_data/annotations/train.txt'  # 训练集文件
+val_txt = './data/my_test_data/annotations/val.txt'  # 验证集文件
+test_txt = './data/my_test_data/annotations/test.txt'  # 测试集文件
 
 # 执行数据集划分
 split_dataset(input_folder, train_txt, val_txt, test_txt)

@@ -1,3 +1,11 @@
+**Note:** This is not an original project, I set it to `public` only because that's convenient for myself to use. The original repo is:
+
+`https://github.com/DoctFaust/swin_transformer.git`
+
+___
+
+#### Below is the original README.md:
+
 # Efficient-Transformer-for-Remote-Sensing-Image-Segmentation, [RemoteSensing](https://www.mdpi.com/2072-4292/13/18/3585)
 ## Introduction 
 We propose an Efficient Transformer combined with an efficient backbone (ref to [Rest](https://arxiv.org/pdf/2105.13677v3.pdf)) and Mlphead to achieve light-weight design. We also improve the edge segmentation by applying explicit and implicit edge enhancement methods. Finally, our model achieves new state-of-the-art performances on Potsdam and Vaihingen datasets.   

@@ -9,7 +9,7 @@ import math
 
 
 class potsdam(data.Dataset):
-    def __init__(self, base_dir='.\\data\\', train=True, dataset='vaihingen', crop_szie=None, val_full_img=False):
+    def __init__(self, base_dir='./data/', train=True, dataset='vaihingen', crop_szie=None, val_full_img=False):
         super(potsdam, self).__init__()
         self.dataset_dir = base_dir
         self.train = train
@@ -22,19 +22,19 @@ class potsdam(data.Dataset):
             crop_szie = [512, 512]
         self.crop_size = crop_szie
         if train:
-            self.image_dir = os.path.join(self.dataset_dir, self.dataset + '\\images')
-            self.label_dir = os.path.join(self.dataset_dir, self.dataset + '\\annotations')
+            self.image_dir = os.path.join(self.dataset_dir, self.dataset + '/images')
+            self.label_dir = os.path.join(self.dataset_dir, self.dataset + '/annotations')
             txt = os.path.join(self.label_dir, 'train.txt')
         else:
-            self.image_dir = os.path.join(self.dataset_dir, self.dataset + '\\images')
-            self.label_dir = os.path.join(self.dataset_dir, self.dataset + '\\annotations')
+            self.image_dir = os.path.join(self.dataset_dir, self.dataset + '/images')
+            self.label_dir = os.path.join(self.dataset_dir, self.dataset + '/annotations')
             txt = os.path.join(self.label_dir, 'test.txt')
 
         with open(txt, "r") as f:
             self.filename_list = f.readlines()
         for filename in self.filename_list:
             image = os.path.join(self.image_dir, filename.strip()+".tif")
-            label = os.path.join(self.label_dir, 'labels\\' + filename.strip()+".tif")
+            label = os.path.join(self.label_dir, 'labels/' + filename.strip()+".tif")
             # print("label",label)
             label= tiff.imread(label)
 

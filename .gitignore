@@ -1,0 +1,6 @@
+.idea
+.venv
+data
+__pycache__
+work_dir
+pretrained_weights

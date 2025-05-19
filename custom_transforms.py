@@ -276,7 +276,7 @@ def edge_contour(label, edge_width=3):
 
 
 if __name__ == '__main__':
-    path = './data/vaihingen/annotations/labels'
+    path = './data/my_test_data/annotations/labels'
     filelist = os.listdir(path)
     for file in filelist:
         print(file)
