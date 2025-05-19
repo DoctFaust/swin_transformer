@@ -1,10 +1,10 @@
-**Note:** This is not an original project, I set it to `public` only because that's convenient for myself to use. The original repo is:
+# Note: This is not an original project, I set it to `public` only because that's convenient for myself to use. The original repo is:
 
-`https://github.com/DoctFaust/swin_transformer.git`
+`https://github.com/zyxu1996/Efficient-Transformer.git`
+
+# Below is the original README.md:
 
 ___
-
-#### Below is the original README.md:
 
 # Efficient-Transformer-for-Remote-Sensing-Image-Segmentation, [RemoteSensing](https://www.mdpi.com/2072-4292/13/18/3585)
 ## Introduction 
