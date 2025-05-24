@@ -27,7 +27,7 @@ class SegmentationMetric(object):
     def Precision(self):
         # return each category pixel accuracy(A more accurate way to call it precision)
         # acc = (TP) / TP + FP
-        precision = np.diag(self.confusionMatrix) / self.confusionMatrix.sum(axis=0)
+        precision = np.diag(self.confusionMatrix) / (self.confusionMatrix.sum(axis=0) + 1e-5)
         return precision
 
     def meanPrecision(self):

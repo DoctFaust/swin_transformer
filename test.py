@@ -358,6 +358,7 @@ def get_model_path(args2):
         object_path = tmp_path
         weight_path = weight_path + '/best_weight.pkl'
         warnings.warn('path is not defined, will be set as "./work_dir/tmp_save"')
+    print(weight_path)
     return object_path, weight_path
 
 
