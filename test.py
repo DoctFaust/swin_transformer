@@ -183,7 +183,7 @@ if distributed:
 data_dir = os.path.join(args2.base_dir, 'data')
 
 potsdam_val = potsdam(base_dir=data_dir, train=False,
-                      dataset=args2.dataset, crop_szie=args2.crop_size)
+                      dataset=args2.dataset, crop_size=args2.crop_size)
 if distributed:
     val_sampler = DistributedSampler(potsdam_val)
 else:
@@ -197,7 +197,7 @@ dataloader_val = DataLoader(
     sampler=val_sampler)
 
 potsdam_val_full = potsdam(base_dir=data_dir, train=False,
-                           dataset=args2.dataset, crop_szie=args2.crop_size, val_full_img=True)
+                           dataset=args2.dataset, crop_size=args2.crop_size, val_full_img=True)
 if distributed:
     full_val_sampler = DistributedSampler(potsdam_val_full)
 else:
@@ -358,6 +358,7 @@ def get_model_path(args2):
         object_path = tmp_path
         weight_path = weight_path + '/best_weight.pkl'
         warnings.warn('path is not defined, will be set as "./work_dir/tmp_save"')
+    print (weight_path)
     return object_path, weight_path
 
 

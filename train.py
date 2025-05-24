@@ -27,7 +27,8 @@ class FullModel(nn.Module):
         self.use_edge = args2.use_edge
 
         # self.ce_loss = Edge_weak_loss()
-        weight = torch.tensor([0.35, 0.75])
+        # weight = torch.tensor([0.35, 0.75])
+        weight = torch.tensor([0.05, 0.95])
         self.ce_loss = CrossEntropyLoss(weight)
 
         self.edge_loss = Edge_loss()
@@ -81,8 +82,8 @@ def get_rank():
 
 class params():
     def __init__(self, args2):
-        if args2.dataset in ['potsdam', 'vaihingen']:
-            self.number_of_classes = 6
+        if args2.dataset in ['potsdam', 'my_test_data']:
+            self.number_of_classes = 2
         models = args2.models
         if models == 'HRNet_32':
             self.STAGE2 = {'NUM_MODULES': 1,
@@ -288,7 +289,7 @@ def train():
 
     model = get_model(args2, device, models=args2.models)
     potsdam_train = potsdam(train=True, dataset=args2.dataset,
-                            crop_szie=args2.crop_size)
+                            crop_size=args2.crop_size)
     # if distributed:
     #     train_sampler = DistributedSampler(potsdam_train)
     # else:
@@ -303,7 +304,7 @@ def train():
         drop_last=True,
         sampler=train_sampler)
 
-    potsdam_val = potsdam(train=False, dataset=args2.dataset, crop_szie=args2.crop_size)
+    potsdam_val = potsdam(train=False, dataset=args2.dataset, crop_size=args2.crop_size)
     # if distributed:
     #     val_sampler = DistributedSampler(potsdam_val)
     # else:

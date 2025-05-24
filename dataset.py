@@ -9,7 +9,7 @@ import math
 
 
 class potsdam(data.Dataset):
-    def __init__(self, base_dir='./data/', train=True, dataset='vaihingen', crop_szie=None, val_full_img=False):
+    def __init__(self, base_dir='./data/', train=True, dataset='my_test_data', crop_size=None, val_full_img=False):
         super(potsdam, self).__init__()
         self.dataset_dir = base_dir
         self.train = train
@@ -18,9 +18,9 @@ class potsdam(data.Dataset):
         self.images = []
         self.labels = []
         self.names = []
-        if crop_szie is None:
-            crop_szie = [512, 512]
-        self.crop_size = crop_szie
+        if crop_size is None:
+            crop_size = [512, 512]
+        self.crop_size = crop_size
         if train:
             self.image_dir = os.path.join(self.dataset_dir, self.dataset + '/images')
             self.label_dir = os.path.join(self.dataset_dir, self.dataset + '/annotations')
