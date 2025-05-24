@@ -47,7 +47,7 @@ class SegmentationMetric(object):
 
     def F1(self):
         # 2*precision*recall / (precision + recall)
-        f1 = 2 * self.Precision() * self.Recall() / (self.Precision() + self.Recall())
+        f1 = 2 * self.Precision() * self.Recall() / (self.Precision() + self.Recall() + 0.0000001)
         return f1
 
     def meanF1(self):

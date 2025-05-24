@@ -27,8 +27,8 @@ class FullModel(nn.Module):
         self.use_edge = args2.use_edge
 
         # self.ce_loss = Edge_weak_loss()
-        # weight = torch.tensor([0.35, 0.75])
-        weight = torch.tensor([0.05, 0.95])
+        weight = torch.tensor([1, 10])
+        # weight = torch.tensor([0.05, 0.95])
         self.ce_loss = CrossEntropyLoss(weight)
 
         self.edge_loss = Edge_loss()
@@ -328,10 +328,8 @@ def train():
     #                                 nesterov=False,
     #                                 )
 
-    optimizer = torch.optim.AdamW([{'params':
-                                      filter(lambda p: p.requires_grad,
-                                             model.parameters()),
-                                  'lr': args2.lr}],
+    optimizer = torch.optim.AdamW([{'params': filter(lambda p: p.requires_grad, 
+                                    model.parameters()),'lr': args2.lr}],
                                 lr=args2.lr,
                                 betas=(0.9, 0.999),
                                 weight_decay=0.01,

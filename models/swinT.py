@@ -13,6 +13,7 @@ import numpy as np
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 import warnings
 from models.head import *
+from models.ega import *
 #from tools.heatmap_fun import draw_features
 
 up_kwargs = {'mode': 'bilinear', 'align_corners': False}
@@ -601,7 +602,7 @@ class SwinTransformer(nn.Module):
     def __init__(self,
                  pretrain_img_size=224,
                  patch_size=4,
-                 in_chans=6,
+                 in_chans=10,
                  embed_dim=96,
                  depths=[2, 2, 6, 2],
                  num_heads=[3, 6, 12, 24],
@@ -768,6 +769,7 @@ class SwinT(nn.Module):
                                         patch_norm=True,
                                         use_checkpoint=False,
                                         in_chans=10)
+        self.ega = EGA(in_channels=self.backbone.num_features[2])
 
         if self.head_name == 'apchead':
             self.decode_head = APCHead(in_channels=head_dim[3], num_classes=nclass, in_index=3, channels=512)
@@ -834,13 +836,37 @@ class SwinT(nn.Module):
     def forward(self, x):
         size = x.size()[2:]
         outputs = []
+        out_backbone = list(self.backbone(x))
 
-        out_backbone = self.backbone(x)
+        # edge_feature = self.edge_head(out_backbone) if self.edge_aux else None
+        # 生成边缘特征（无论是否启用 edge_aux）
+        if self.edge_aux:
+            edge_feature = self.edge_head(out_backbone)
+        else:
+            # 生成一个全零张量，形状与输入图像的分辨率一致
+            B, _, H, W = x.shape
+            edge_feature = torch.zeros((B, 1, H, W), device=x.device)
+
+        # stage3_feat = out_backbone[2]
+        # pred_initial = F.interpolate(self.decode_head(out_backbone), scale_factor=0.25)
+        # stage3_feat_enhanced = self.ega(edge_feature, stage3_feat, pred_initial)
+
+        # 生成初始预测（假设输出2通道）
+        pred_initial = self.decode_head(out_backbone)  # 形状 (B, 2, 128, 128)
+    
+        # 下采样到 Stage3 的分辨率（16x16）
+        pred_initial = F.interpolate(pred_initial, size=(16, 16), mode='bilinear', align_corners=True)
+    
+        # 应用 EGA
+        stage3_feat = out_backbone[2]  # 形状 (B, 384, 16, 16)
+        stage3_feat_enhanced = self.ega(edge_feature, stage3_feat, pred_initial)
+
+        out_backbone[2] = stage3_feat_enhanced
 
         # for i, out in enumerate(out_backbone):
         #     draw_features(out, f'C{i}')
 
-        x0 = self.decode_head(out_backbone)
+        x0 = self.decode_head(tuple(out_backbone))
         if isinstance(x0, (list, tuple)):
             for out in x0:
                 out = F.interpolate(out, size, **up_kwargs)
@@ -868,7 +894,7 @@ def swin_tiny(nclass, pretrained=False, aux=False, head='uperhead', edge_aux=Fal
         pretrained_root = './pretrained_weights/swin_tiny_patch4_window7_224.pth'
     else:
         pretrained_root = None
-    model = SwinT(nclass, embed_dim=96, depths=[2, 2, 6, 2], window_size=8, aux=aux, head=head, edge_aux=edge_aux,
+    model = SwinT(nclass, embed_dim=96, depths=[2, 2, 6, 2], window_size=4, aux=aux, head=head, edge_aux=edge_aux,
                   num_heads=[3, 6, 12, 24], head_dim=[96, 192, 384, 768], pretrained_root=pretrained_root)
 
     return model
