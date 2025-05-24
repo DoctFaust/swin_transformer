@@ -1,0 +1,109 @@
+Weight: 1:5 end_epoch: 20 warm_epochs: 1 lr: 0.001 train_batchsize: 16 val_batchsize: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9538       1.0    0.9764    0.9538|
+|PWD                     :       0.0       0.0       0.0       0.0|
+mIoU:47.69 ACC:95.38 mF1:48.82 mPrecision:47.69 mRecall:50.0
+
+___
+
+Weight: 1:10 end_: 20 warm_epochs: 1 lr: 0.001 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9545    0.1995    0.3301    0.1977|
+|PWD                     :    0.0463    0.8036    0.0876    0.0458|
+mIoU:12.17 ACC:22.74 mF1:20.89 mPrecision:50.04 mRecall:50.16
+
+___
+
+Weight: 1:15 end_: 20 warm_epochs: 1 lr: 0.001 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9547    0.3646    0.5276    0.3584|
+|PWD                     :    0.0467    0.6425     0.087    0.0455|
+mIoU:20.19 ACC:37.74 mF1:30.73 mPrecision:50.07 mRecall:50.35
+
+___
+
+Weight: 1:20 end_: 20 warm_epochs: 1 lr: 0.001 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9526    0.5344    0.6847    0.5205|
+|PWD                     :    0.0447    0.4506    0.0814    0.0424|
+mIoU:28.15 ACC:53.05 mF1:38.3 mPrecision:49.87 mRecall:49.25
+
+___
+
+Weight: 1:25 end_: 20 warm_epochs: 1 lr: 0.001 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9538       1.0    0.9764    0.9538|
+|PWD                     :       0.0       0.0       0.0       0.0|
+mIoU:47.69 ACC:95.38 mF1:48.82 mPrecision:47.69 mRecall:50.0
+
+___
+
+Weight: 1:10 end_: 30 warm_epochs: 3 lr: 0.0005 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9538       1.0    0.9764    0.9538|
+|PWD                     :       0.0       0.0       0.0       0.0|
+mIoU:47.69 ACC:95.38 mF1:48.82 mPrecision:47.69 mRecall:50.0
+
+___
+
+Weight: 1:15 end_: 30 warm_epochs: 3 lr: 0.0005 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9534    0.9617    0.9575    0.9185|
+|PWD                     :    0.0342    0.0281    0.0308    0.0157|
+mIoU:46.71 ACC:91.86 mF1:49.42 mPrecision:49.38 mRecall:49.49
+
+___
+
+Weight: 1:20 end_: 30 warm_epochs: 3 lr: 0.0005 rain_: 16 sizevbatch: 16
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9537     0.973    0.9632    0.9291|
+|PWD                     :    0.0404    0.0235    0.0297    0.0151|
+mIoU:47.21 ACC:92.92 mF1:49.65 mPrecision:49.7 mRecall:49.82
+
+___
+
+Weight: 1:20 end_: 30 warm_epochs: 3 lr: 0.0005 rain_: 32 sizevbatch: 32
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :     0.954    0.8409    0.8938    0.8081|
+|PWD                     :    0.0468    0.1616    0.0726    0.0377|
+mIoU:42.29 ACC:80.95 mF1:48.32 mPrecision:50.04 mRecall:50.12
+
+___
+
+Weight: 1:20 end_: 40 warm_epochs: 3 lr: 0.001 rain_: 64 sizevbatch: 64
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9553    0.2603    0.4091    0.2572|
+|PWD                     :    0.0467    0.7486    0.0879     0.046|
+mIoU:15.16 ACC:28.29 mF1:24.85 mPrecision:50.1 mRecall:50.45
+
+___
+
+Weight: 1:20 end_: 25 warm_epochs: 5 lr: 0.01 rain_: 64 sizevbatch: 64
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9597    0.0333    0.0643    0.0332|
+|PWD                     :    0.0464    0.9711    0.0885    0.0463|
+mIoU:3.98 ACC:7.66 mF1:7.64 mPrecision:50.3 mRecall:50.22
+
+___
+
+Weight: 1:20 end_: 100 warm_epochs: 5 lr: 0.00001 rain_: 64 sizevbatch: 64
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9519    0.0033    0.0066    0.0033|
+|PWD                     :    0.0462    0.9966    0.0882    0.0462|
+mIoU:2.47 ACC:4.92 mF1:4.74 mPrecision:49.9 mRecall:49.99
+
+___
+
+Weight: 1:20 end_: 30 warm_epochs: 3 lr: 0.001 rain_: 8 vsizebatch: 8
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9538    0.9776    0.9656    0.9334|
+|PWD                     :    0.0445    0.0215     0.029    0.0147|
+mIoU:47.41 ACC:93.35 mF1:49.73 mPrecision:49.91 mRecall:49.96
+
+___
+
+Weight: 1:20 end_: 50 warm_epochs: 3 lr: 1e-6 rain_: 8 vsizebatch: 8
+|CLASSES                 : Precision    Recall        F1       IOU|
+|healthy                 :    0.9538       1.0    0.9764    0.9538|
+|PWD                     :       0.0       0.0       0.0       0.0|
+mIoU:47.69 ACC:95.38 mF1:48.82 mPrecision:47.69 mRecall:50.0

@@ -27,7 +27,7 @@ class FullModel(nn.Module):
         self.use_edge = args2.use_edge
 
         # self.ce_loss = Edge_weak_loss()
-        weight = torch.tensor([1, 10])
+        weight = torch.tensor([1, 20])
         # weight = torch.tensor([0.05, 0.95])
         self.ce_loss = CrossEntropyLoss(weight)
 

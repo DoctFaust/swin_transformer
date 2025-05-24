@@ -1,3 +1,4 @@
+# 统计健康的和染病的样本数，以调整权重
 import os
 import numpy as np
 import rasterio
